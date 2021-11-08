@@ -163,7 +163,7 @@ Project Link: [https://github.com/Fabalinks/Rearing_analysis](https://github.com
 
 * [Sirota lab](https://cogneuro.bio.lmu.de/people/group-members/sirota/index.html)
 * [ Funding - RTG 2175](https://www.rtg2175.bio.lmu.de/index.html)
-
+* [Jin Lee](https://github.com/jinhl9)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
