@@ -1,0 +1,12 @@
+# ignore all pictures and pdf files
+*.pdf
+
+*.npy
+
+# ignore all files in any directory named 
+figures/
+
+
+
+
+processed/
