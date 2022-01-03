@@ -126,7 +126,7 @@ self explanatory text file that can be machine read out
 <!-- Data Description -->
 ## Jupyter notebooks descriptions
 
-[20210505_Calibration_arena_movement](Rearing_analysis/Code/20210505_Calibration_arena_movement)
+[20210505_Calibration_arena_movement](/Code/20210505_Calibration_arena_movement)
   Calculating vestibular/ physical  displacement of the arena. 
 
 
