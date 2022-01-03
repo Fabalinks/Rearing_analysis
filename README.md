@@ -126,13 +126,61 @@ self explanatory text file that can be machine read out
 <!-- Data Description -->
 ## Jupyter notebooks descriptions
 
-[20210505_Calibration_arena_movement](Rearing_analysis/Code/20210505_Calibration_arena_movement)
-  Calculating vestibular/ physical  displacement of the arena. 
+[20210505_Calibration_arena_movement](https://github.com/Fabalinks/Rearing_analysis/blob/main/Code/20210505_Calibration_arena_movement.ipynb)
+  Calculating vestibular/ physical  displacement of the arena.
+
+[20210507_Positions_together](https://github.com/Fabalinks/Rearing_analysis/blob/main/Code/20210507_Positions_together.ipynb)
+Moving of event files together
+
+[20210512_File_moving](https://github.com/Fabalinks/Rearing_analysis/blob/main/Code/20210512_File_moving%20.ipynb)
+      Moving of ephys files together.
+
+[20210517_FS_Joining_txt_frame_number](https://github.com/Fabalinks/Rearing_analysis/blob/main/Code/20210517_FS_Joining_txt_frame_number.ipynb)
+        Create spreadsheet with events and frame numbers for ephys sync
+
+[20210525_FS_Borderless_rears](https://github.com/Fabalinks/Rearing_analysis/blob/main/Code/20210525_FS_Borderless_rears%20.ipynb)
+          Looking at trajectories, rear and events only inside the boundary of arena - redundant later    
+
+[20210525_FS_Identify_invisible_beacon](https://github.com/Fabalinks/Rearing_analysis/blob/main/Code/20210525_FS_Identify_invisible_beacon.ipynb)
+            getting only invisible beacon time out  
+
+[20210525_FS_LT_Performance_FS03-FS06](https://github.com/Fabalinks/Rearing_analysis/blob/main/Code/20210525_FS_LT_Performance_FS03-FS06.ipynb)
+Plotting Long Term performance of each rat with beacon metrics
+
+[20210525_FS_Z_Time_FS03_FS06](https://github.com/Fabalinks/Rearing_analysis/blob/main/Code/20210525_FS_Z_Time_FS03_FS06.ipynb)
+Identify time spent rearing and graph
+
+[20210526_FS_rearing_histogram](https://github.com/Fabalinks/Rearing_analysis/blob/main/Code/20210526_FS_rearing_histogram.ipynb)
+Creates a data frame including all events with all information about trial to be exported and analysed later
+
+[20210628_FS_Calibration_File_visualization](https://github.com/Fabalinks/Rearing_analysis/blob/main/Code/20210628_FS_Calibration_File_visualization.ipynb)
+Uses predetected file for calibration settings which are then hardcoded  
+
+[20210706_FS_rearing_fatigue](https://github.com/Fabalinks/Rearing_analysis/blob/main/Code/20210706_FS_rearing_fatigue.ipynb)
+Calculating fatigue in a trial - not finished
+
+[20210811_FS_Normalize_occupancy_bins](https://github.com/Fabalinks/Rearing_analysis/blob/main/Code/20210811_FS_Normalize_occupancy_bins.ipynb)
+Use area estimation to be able to normalize rearing attempts within a given beacon position - uses file from 20210526_FS_rearing_histogram
 
 
+[20210811_FS_Plotting_Normalize_occupancy_bins](https://github.com/Fabalinks/Rearing_analysis/blob/main/Code/20210811_FS_Plotting_Normalize_occupancy_bins.ipynb)
+Plots histogram of rears around beacon which is normalized.
+
+[20211108_FS_visualize_radius](https://github.com/Fabalinks/Rearing_analysis/blob/main/Code/20211108_FS_visualize_radius.ipynb)
+Plots area differences between circle sizes.
+
+[20211111_FS_Normalization_problem](https://github.com/Fabalinks/Rearing_analysis/blob/main/Code/20211111_FS_Normalization_problem.ipynb)
+Simplified to solve normalization problem.
+
+[20211125_FS_rearing_dynamics_simple](https://github.com/Fabalinks/Rearing_analysis/blob/main/Code/20211125_FS_rearing_dynamics_simple.ipynb)
+Makes a Dataframe with rear events and trajectories surrounding it.
 
 
+[20211201_FS_rearing_dynamics_PLOTTING](https://github.com/Fabalinks/Rearing_analysis/blob/main/Code/20211201_FS_rearing_dynamics_PLOTTING.ipynb)
+Plotting of the rearing dynamics around beacon for progress report
 
+[20211708_FS_Pseudorandom_disttribution](https://github.com/Fabalinks/Rearing_analysis/blob/main/Code/20211708_FS_Pseudorandom_disttribution.ipynb)
+making the next beacon to be pseudorandomly assigned at least x cm away from last one.
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
