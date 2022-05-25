@@ -9,6 +9,20 @@ import scipy.signal
 ## Filtering of speed, position, **sampling rate differs across trials!
 
 
+##Global variable for adjusting offsets between beacon position and rat position for FS04
+
+x_max, x_min = 0.2, -0.76
+x_offset = x_max - (x_max - x_min)/2
+y_max, y_min = 0.072,  -1.754
+y_offset = y_max - (y_max - y_min)/2
+
+##Global variable for getting relevant arena
+
+X_cut_min = -.59
+Y_cut_max = 1.61
+X_cut_max = .12
+Y_cut_min = .00
+
 def read_data(root_path, tag, has_beacon=True, has_metadata=True):
     """
     root_path: root directory where data is ex) ../Data/Raw/
@@ -49,7 +63,7 @@ def multiple_days_data(root_path, tags):
     for tag in tags:
         beacon_data, position_data = read_data(root_path, tag)
         beacon_datalist.append(beacon_data)
-        position_datalist.appned(position_data)
+        position_datalist.append(position_data)
     return beacon_datalist, position_datalist
 
 
@@ -119,12 +133,13 @@ class BeaconPosition():
     def __init__(self, root_path, tag, has_beacon=True, has_metadata=True):
         self.position_data, self.beacon_data, self.metadata = read_data(
             root_path, tag, has_beacon, has_metadata)
-        self.position_data = rotation_correction(
-            self.position_data.to_numpy(dtype = np.float64)[:, :4])
-        self.position_data=self.position_data[:, [0,1,3,2]]
+        self.position_data = rotation_correction(self.position_data.to_numpy()[:, [0, 1, 3, 2]])
+        self.position_data[:, 1] = self.position_data[:, 1] - x_offset
+        self.position_data[:, 2] = self.position_data[:, 2] + y_offset
 
         if has_beacon:
-            self.beacon_data = self.beacon_data.to_numpy(dtype = np.float64)
+            self.beacon_data = self.beacon_data.to_numpy()
+            self.beacon_data = rotation_correction(self.beacon_data[:, [0, -2, -1]])
 
         self.get_distance_speed()
         self.statistics = self.get_statistic()
@@ -227,13 +242,18 @@ class MultiDaysBeaconPosition():
         session_rearing_counts =[]
         session_rearing_durations = []
         session_rearing_distance = []
+
+        def rear_in_arena(data):
+            return (data[:, 1] > X_cut_min) & (data[:, 1] < X_cut_max) & (data[:, 2] > Y_cut_min) & (
+                        data[:, 2] < Y_cut_max)
+
         for i, session in enumerate(self.trial_list):
             trial_rearings = []
             trial_rearing_counts = []
             trial_rearing_durations = []
             trial_distance_beacon =[]
             for j, trial in enumerate(session[1:]):
-                rearings = trial[:, -1] >= threshold
+                rearings = (trial[:, -1] >= threshold) & (rear_in_arena(trial))
                 events =np.argwhere(np.diff(rearings))
                 events = events.reshape(len(events)).tolist()
                 trial_rearings.append(trial[rearings])
@@ -260,7 +280,7 @@ class MultiDaysBeaconPosition():
                         ends = (events+ [-1])[1::2]
                     rearing_duration = [trial[e,0]-trial[s,0] for s, e in zip(starts, ends)]
                     beacon_pos = self.beacon_list[i][j]
-                    distance_from_beacon = np.mean([np.mean(np.linalg.norm(trial[s:e, 1:3] - beacon_pos, axis = 1)) for s,e in zip(starts, ends)])
+                    distance_from_beacon = [np.mean(np.linalg.norm(trial[s:e, 1:3] - beacon_pos, axis = 1)) for s,e in zip(starts, ends)]
                     trial_rearing_durations.append(rearing_duration)
                     trial_distance_beacon.append(distance_from_beacon)
                 ## measure a distance from beacon while rearing
